@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda Ingeniería - UDB</title>
+    <link rel="stylesheet" href="css/style-login copy.css" />
+  </head>
+  <body>
+    <!-- Pantalla de Login -->
+    <div id="loginScreen" class="session">
+      <div class="left"></div>
+      <form action="" class="log-in" autocomplete="off" id="loginForm">
+        <img src="css/img/udb_logo UDB color.svg" alt="logo" />
+        <div class="floating-label">
+          <input
+            placeholder="Carnet"
+            name="carnet"
+            id="carnet"
+            autocomplete="on"
+          />
+          <label for="carnet">Carnet:</label>
+          <div class="icon">
+            <?xml version="1.0" encoding="UTF-8"?>
+            <svg
+              enable-background="new 0 0 100 100"
+              version="1.1"
+              viewBox="0 0 100 100"
+              xml:space="preserve"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <style type="text/css">
+                .st0 {
+                  fill: none;
+                }
+              </style>
+              <g transform="translate(0 -952.36)">
+                <path
+                  d="m17.5 977c-1.3 0-2.4 1.1-2.4 2.4v45.9c0 1.3 1.1 2.4 2.4 2.4h64.9c1.3 0 2.4-1.1 2.4-2.4v-45.9c0-1.3-1.1-2.4-2.4-2.4h-64.9zm2.4 4.8h60.2v1.2l-30.1 22-30.1-22v-1.2zm0 7l28.7 21c0.8 0.6 2 0.6 2.8 0l28.7-21v34.1h-60.2v-34.1z"
+                  fill="#ffffff"
+                />
+              </g>
+              <rect class="st0" width="100" height="100" />
+            </svg>
+          </div>
+        </div>
+        <div class="floating-label">
+          <input
+            placeholder="Contraseña"
+            type="password"
+            name="password"
+            id="password"
+            autocomplete="off"
+          />
+          <label for="password">Contraseña:</label>
+          <div class="icon">
+            <?xml version="1.0" encoding="UTF-8"?>
+            <svg
+              enable-background="new 0 0 24 24"
+              version="1.1"
+              viewBox="0 0 24 24"
+              xml:space="preserve"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <style type="text/css">
+                .st0 {
+                  fill: none;
+                }
+                .st1 {
+                  fill: #ffffff;
+                }
+              </style>
+              <rect class="st0" width="24" height="24" />
+              <path class="st1" d="M19,21H5V9h14V21z M6,20h12V10H6V20z" />
+              <path
+                class="st1"
+                d="M16.5,10h-1V7c0-1.9-1.6-3.5-3.5-3.5S8.5,5.1,8.5,7v3h-1V7c0-2.5,2-4.5,4.5-4.5s4.5,2,4.5,4.5V10z"
+              />
+              <path
+                class="st1"
+                d="m12 16.5c-0.8 0-1.5-0.7-1.5-1.5s0.7-1.5 1.5-1.5 1.5 0.7 1.5 1.5-0.7 1.5-1.5 1.5zm0-2c-0.3 0-0.5 0.2-0.5 0.5s0.2 0.5 0.5 0.5 0.5-0.2 0.5-0.5-0.2-0.5-0.5-0.5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <button type="submit" class="loginBtn">Log in</button>
+        <a href="recuperar-password.html" class="discrete"
+          >Olvide mi Contraseña</a
+        >
+      </form>
+    </div>
+
+    <!-- Aplicación Principal -->
+    <div id="appScreen" class="container" style="display: none">
+      <header>
+        <div class="header-content">
+          <img
+            src="css/img/udb_logo UDB color.svg"
+            alt="logo"
+            class="header-logo"
+          />
+          <div class="header-text">
+            <h1>UDBLife</h1>
+            <h2>Agenda de Ingeniería</h2>
+          </div>
+          <div class="user-info">
+            <span id="userCarnet"></span>
+            <button onclick="app.cerrarSesion()">Cerrar Sesión</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Formulario para agregar materias -->
+      <section class="form-section">
+        <h2>Agregar Nueva Materia</h2>
+        <form id="materiaForm">
+          <input
+            type="text"
+            id="nombreMateria"
+            placeholder="Nombre de la materia"
+            required
+          />
+          <input
+            type="text"
+            id="codigoMateria"
+            placeholder="Código (ej: CALC1)"
+          />
+          <select id="semestre">
+            <option value="1">Semestre 1</option>
+            <option value="2">Semestre 2</option>
+            <option value="3">Semestre 3</option>
+            <option value="4">Semestre 4</option>
+            <option value="5">Semestre 5</option>
+          </select>
+          <button type="submit" class="btn-app">Agregar Materia</button>
+        </form>
+      </section>
+
+      <!-- Formulario para agregar trabajos -->
+      <section class="form-section">
+        <h2>Agregar Trabajo/Entregable</h2>
+        <form id="trabajoForm">
+          <select id="materiaSelect" required>
+            <option value="">Seleccionar materia</option>
+          </select>
+          <input
+            type="text"
+            id="tituloTrabajo"
+            placeholder="Título del trabajo"
+            required
+          />
+          <textarea
+            id="descripcionTrabajo"
+            placeholder="Descripción"
+          ></textarea>
+          <input type="date" id="fechaEntrega" required />
+          <select id="prioridad">
+            <option value="baja">Baja</option>
+            <option value="media">Media</option>
+            <option value="alta">Alta</option>
+          </select>
+          <button type="submit" class="btn-app">Agregar Trabajo</button>
+        </form>
+      </section>
+
+      <!-- Lista de materias y trabajos -->
+      <section class="materias-section">
+        <h2>Mis Materias y Trabajos</h2>
+        <div id="listaMaterias"></div>
+      </section>
+    </div>
+
+    <script src="js/script copy.js"></script>
+  </body>
+</html>

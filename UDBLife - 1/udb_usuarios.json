@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "carnet": "MH230747",
+    "password": "qwerty"
+  },
+  {
+    "id": 2,
+    "carnet": "B00456",
+    "password": "otraPass"
+  }
+]
